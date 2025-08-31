@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useReducer } from 'react';
+import { sanitizeInput } from '@/utils/security';
 
 const CartContext = createContext();
 
@@ -47,7 +48,20 @@ export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [] });
 
   const addToCart = (product) => {
-    dispatch({ type: 'ADD_TO_CART', payload: product });
+    // Validate product exists and has required properties
+    if (!product || !product.id || !product.name || !product.price) {
+      console.error('Invalid product data');
+      return;
+    }
+    
+    // Sanitize product data before adding to cart
+    const sanitizedProduct = {
+      ...product,
+      name: sanitizeInput(product.name || ''),
+      description: sanitizeInput(product.description || ''),
+      price: sanitizeInput(product.price || '')
+    };
+    dispatch({ type: 'ADD_TO_CART', payload: sanitizedProduct });
   };
 
   const removeFromCart = (productId) => {
@@ -68,7 +82,8 @@ export function CartProvider({ children }) {
 
   const getCartTotal = () => {
     return state.items.reduce((total, item) => {
-      return total + (parseFloat(item.price.replace('$', '')) * item.quantity);
+      const price = typeof item.price === 'string' ? parseFloat(item.price.replace('$', '')) : item.price;
+      return total + (price * item.quantity);
     }, 0);
   };
 

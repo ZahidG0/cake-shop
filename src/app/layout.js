@@ -2,6 +2,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from '@/context/CartContext';
 import { ThemeProvider } from '@/context/ThemeContext';
+import ClientLayout from '@/components/ClientLayout';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -50,7 +51,9 @@ export default function RootLayout({ children }) {
       >
         <ThemeProvider>
           <CartProvider>
-            {children}
+            <ClientLayout>
+              {children}
+            </ClientLayout>
           </CartProvider>
         </ThemeProvider>
       </body>

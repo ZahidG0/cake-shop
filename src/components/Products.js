@@ -4,12 +4,11 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, ShoppingCart } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+import { useMemo, useCallback, memo, useState, useEffect } from 'react';
 import { ProductsHeading, ProductsDescription } from './ProductsText';
 
-export default function Products() {
-  const { addToCart } = useCart();
-  
-  const products = [
+// Move products array outside component to prevent re-creation
+const PRODUCTS_DATA = [
     {
       id: 1,
       name: 'Chocolate Delight',
@@ -210,7 +209,25 @@ export default function Products() {
       image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=300&fit=crop',
       description: 'Delicate lavender cake with honey drizzle'
     }
-  ];
+];
+
+function Products() {
+  const { addToCart } = useCart();
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  
+  // Memoize products and addToCart callback
+  const products = useMemo(() => PRODUCTS_DATA, []);
+  const handleAddToCart = useCallback((product) => addToCart(product), [addToCart]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      setIsLoaded(true);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section id="products" className="py-20 gradient-bg">
@@ -226,51 +243,113 @@ export default function Products() {
           <ProductsDescription />
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {products.map((product, index) => (
+        {isLoading ? (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg dark:shadow-[0_0_20px_rgba(0,0,0,0.3)] dark:border dark:border-slate-700 overflow-hidden"
+              >
+                <div className="relative h-48 bg-gray-200 dark:bg-gray-700 animate-pulse" />
+                <div className="p-6 space-y-3">
+                  <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                  <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 animate-pulse" />
+                  <div className="flex justify-between items-center pt-2">
+                    <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-16 animate-pulse" />
+                    <div className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse" />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {products.map((product, index) => (
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.05 }}
-              className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg dark:shadow-[0_0_20px_rgba(0,0,0,0.3)] dark:border dark:border-slate-700 overflow-hidden card-hover group"
+              initial={{ opacity: 0, y: 20, scale: 0.9 }}
+              animate={isLoaded ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
+              whileHover={{ y: -5, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onHoverStart={() => setHoveredCard(product.id)}
+              onHoverEnd={() => setHoveredCard(null)}
+              transition={{ 
+                duration: isLoaded ? 0.3 : 0.5,
+                delay: isLoaded ? 0 : index * 0.1,
+                ease: "easeOut"
+              }}
+              className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg dark:shadow-[0_0_20px_rgba(0,0,0,0.3)] dark:border dark:border-slate-700 overflow-hidden cursor-pointer"
             >
-              <div className="relative h-48 overflow-hidden">
+              <motion.div 
+                className="relative h-48 overflow-hidden"
+                animate={{ scale: hoveredCard === product.id ? 1.05 : 1 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Image
                   src={product.image}
                   alt={product.name}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                  priority={index < 4}
+                  loading={index < 4 ? 'eager' : 'lazy'}
+                  className="object-cover"
                 />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 flex items-center space-x-1">
+                <motion.div 
+                  className="absolute top-4 right-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full px-2 py-1 flex items-center space-x-1 border border-white/20 dark:border-gray-600/50"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: (index * 0.1) + 0.3 }}
+                >
                   <Star size={14} fill="currentColor" className="text-yellow-400" />
-                  <span className="text-sm font-medium">{product.rating}</span>
-                </div>
-              </div>
+                  <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{product.rating}</span>
+                </motion.div>
+              </motion.div>
               
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+              <motion.div 
+                className="p-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: (index * 0.1) + 0.2 }}
+              >
+                <motion.h3 
+                  className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2"
+                  animate={{ color: hoveredCard === product.id ? "#ea580c" : "" }}
+                  transition={{ duration: 0.3 }}
+                >
                   {product.name}
-                </h3>
+                </motion.h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                   {product.description}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold text-orange-600">
+                  <motion.span 
+                    className="text-xl font-bold text-orange-600"
+                    animate={{ scale: hoveredCard === product.id ? 1.1 : 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     {product.price}
-                  </span>
-                  <button 
-                    onClick={() => addToCart(product)}
+                  </motion.span>
+                  <motion.button 
+                    onClick={() => handleAddToCart(product)}
                     className="bg-orange-600 text-white p-2 rounded-full hover:bg-orange-700 transition-colors"
+                    animate={{ 
+                      scale: hoveredCard === product.id ? 1.1 : 1,
+                      rotate: hoveredCard === product.id ? 5 : 0
+                    }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ duration: 0.3 }}
                   >
                     <ShoppingCart size={18} />
-                  </button>
+                  </motion.button>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -287,3 +366,5 @@ export default function Products() {
     </section>
   );
 }
+
+export default memo(Products);
