@@ -13,7 +13,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -24,10 +24,10 @@ export default function About() {
             className="space-y-8"
           >
             <div>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6">
-                Our Sweet Story
-              </h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-gray-100 mb-6">
+                              Our Sweet Story
+                            </h2>
+              <div className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
                 <p>
                   Founded in 2008 by master baker Sarah Johnson, Sweet Delights began as a small 
                   family bakery with a simple mission: to create exceptional cakes that bring joy 
@@ -54,31 +54,31 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="text-center p-4 rounded-xl bg-orange-50"
+                  className="text-center p-4 rounded-xl bg-orange-50 dark:bg-orange-900/20"
                 >
                   <div className="text-orange-600 flex justify-center mb-2">
                     {stat.icon}
                   </div>
-                  <div className="text-2xl font-bold text-gray-900 mb-1">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    {stat.label}
-                  </div>
+                  <div className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">
+                                      {stat.number}
+                                    </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">
+                                      {stat.label}
+                                    </div>
                 </motion.div>
               ))}
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <div className="flex items-center space-x-2 text-sm text-gray-600">
+              <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 <span>100% Organic Ingredients</span>
               </div>
-              <div className="flex items-center space-x-2 text-sm text-gray-600">
+              <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
                 <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                 <span>Handmade Daily</span>
               </div>
-              <div className="flex items-center space-x-2 text-sm text-gray-600">
+              <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
                 <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
                 <span>Custom Orders Welcome</span>
               </div>
@@ -107,15 +107,15 @@ export default function About() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl max-w-xs"
+                className="absolute -bottom-8 -left-8 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl max-w-xs"
               >
                 <div className="flex items-center space-x-4">
                   <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
                     <span className="text-2xl">👩‍🍳</span>
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">Sarah Johnson</div>
-                    <div className="text-sm text-gray-600">Master Baker & Founder</div>
+                    <div className="font-semibold text-gray-900 dark:text-gray-100">Sarah Johnson</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300">Master Baker & Founder</div>
                     <div className="text-xs text-orange-600 mt-1">15+ Years Experience</div>
                   </div>
                 </div>

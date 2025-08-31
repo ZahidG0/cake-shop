@@ -35,7 +35,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,12 +44,12 @@ export default function FAQ() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Got questions? We've got answers! Here are the most common questions our customers ask.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-gray-100 mb-4">
+                      Frequently Asked Questions
+                    </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                      Got questions? We've got answers! Here are the most common questions our customers ask.
+                    </p>
         </motion.div>
 
         <div className="max-w-3xl mx-auto">
@@ -62,14 +62,14 @@ export default function FAQ() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="mb-4"
             >
-              <div className="bg-gray-50 rounded-2xl overflow-hidden">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden">
                 <button
-                  onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-                  className="w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-100 transition-colors"
-                >
-                  <span className="text-lg font-semibold text-gray-900 pr-4">
-                    {faq.question}
-                  </span>
+                                  onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
+                                  className="w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                                >
+                  <span className="text-lg font-semibold text-gray-900 dark:text-gray-100 pr-4">
+                                      {faq.question}
+                                    </span>
                   <div className="flex-shrink-0">
                     {openIndex === index ? (
                       <Minus size={20} className="text-orange-600" />
@@ -88,9 +88,9 @@ export default function FAQ() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 text-gray-600 leading-relaxed">
-                        {faq.answer}
-                      </div>
+                      <div className="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed">
+                                          {faq.answer}
+                                        </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -106,9 +106,9 @@ export default function FAQ() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-center mt-12"
         >
-          <p className="text-gray-600 mb-4">
-            Still have questions? We're here to help!
-          </p>
+          <p className="text-gray-600 dark:text-gray-300 mb-4">
+                      Still have questions? We're here to help!
+                    </p>
           <button className="bg-orange-600 text-white px-8 py-3 rounded-full hover:bg-orange-700 transition-colors font-semibold">
             Contact Us
           </button>

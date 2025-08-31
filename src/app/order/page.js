@@ -20,7 +20,7 @@ export default function Order() {
 
   if (orderPlaced) {
     return (
-      <main className="min-h-screen">
+      <main className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-purple-900 dark:to-indigo-900">
         <Header />
         <section className="pt-24 pb-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,18 +28,18 @@ export default function Order() {
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl">✅</span>
               </div>
-              <h1 className="text-3xl font-serif font-bold text-gray-900 mb-4">
-                Order Confirmed!
-              </h1>
-              <p className="text-gray-600 mb-8">
-                Thank you for your order! We'll start preparing your delicious cakes right away.
-                You'll receive a confirmation email shortly.
-              </p>
-              <div className="bg-orange-50 rounded-2xl p-6 mb-8">
-                <p className="text-orange-800">
-                  <strong>Order #12345</strong><br />
-                  Estimated delivery: Tomorrow, 2:00 PM - 4:00 PM
-                </p>
+              <h1 className="text-3xl font-serif font-bold text-gray-900 dark:text-gray-100 mb-4">
+                              Order Confirmed!
+                            </h1>
+              <p className="text-gray-600 dark:text-gray-300 mb-8">
+                              Thank you for your order! We'll start preparing your delicious cakes right away.
+                              You'll receive a confirmation email shortly.
+                            </p>
+              <div className="bg-orange-50 dark:bg-orange-900/20 rounded-2xl p-6 mb-8">
+                <p className="text-orange-800 dark:text-orange-200">
+                                  <strong>Order #12345</strong><br />
+                                  Estimated delivery: Tomorrow, 2:00 PM - 4:00 PM
+                                </p>
               </div>
               <button
                 onClick={() => window.location.href = '/'}
@@ -56,7 +56,7 @@ export default function Order() {
   }
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-purple-900 dark:to-indigo-900">
       <Header />
       
       <section className="pt-24 pb-20">
@@ -67,12 +67,12 @@ export default function Order() {
             transition={{ duration: 0.8 }}
             className="mb-8"
           >
-            <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-              Checkout
-            </h1>
-            <p className="text-gray-600">
-              Complete your order and get ready for some sweet delights!
-            </p>
+            <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-gray-100 mb-4">
+                          Checkout
+                        </h1>
+            <p className="text-gray-600 dark:text-gray-300">
+                          Complete your order and get ready for some sweet delights!
+                        </p>
           </motion.div>
 
           <form onSubmit={handleSubmit} className="grid lg:grid-cols-3 gap-8">
@@ -82,57 +82,57 @@ export default function Order() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="bg-white rounded-2xl p-6 shadow-lg"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
               >
                 <div className="flex items-center space-x-3 mb-6">
                   <User size={24} className="text-orange-600" />
-                  <h2 className="text-xl font-serif font-bold text-gray-900">
-                    Customer Information
-                  </h2>
+                  <h2 className="text-xl font-serif font-bold text-gray-900 dark:text-gray-100">
+                                      Customer Information
+                                    </h2>
                 </div>
                 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      First Name *
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                          First Name *
+                                        </label>
                     <input
                       type="text"
                       required
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 dark:bg-gray-800 dark:text-gray-100"
                       placeholder="John"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Last Name *
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                          Last Name *
+                                        </label>
                     <input
                       type="text"
                       required
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 dark:bg-gray-800 dark:text-gray-100"
                       placeholder="Doe"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email *
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                          Email *
+                                        </label>
                     <input
                       type="email"
                       required
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 dark:bg-gray-800 dark:text-gray-100"
                       placeholder="john@example.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone *
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                          Phone *
+                                        </label>
                     <input
                       type="tel"
                       required
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 dark:bg-gray-800 dark:text-gray-100"
                       placeholder="(555) 123-4567"
                     />
                   </div>
@@ -144,71 +144,71 @@ export default function Order() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-white rounded-2xl p-6 shadow-lg"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
               >
                 <div className="flex items-center space-x-3 mb-6">
                   <MapPin size={24} className="text-orange-600" />
-                  <h2 className="text-xl font-serif font-bold text-gray-900">
-                    Delivery Information
-                  </h2>
+                  <h2 className="text-xl font-serif font-bold text-gray-900 dark:text-gray-100">
+                                      Delivery Information
+                                    </h2>
                 </div>
                 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Street Address *
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                          Street Address *
+                                        </label>
                     <input
                       type="text"
                       required
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 dark:bg-gray-800 dark:text-gray-100"
                       placeholder="123 Main Street"
                     />
                   </div>
                   <div className="grid md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        City *
-                      </label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                              City *
+                                            </label>
                       <input
                         type="text"
                         required
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                        className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 dark:bg-gray-800 dark:text-gray-100"
                         placeholder="Sweet City"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        State *
-                      </label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                              State *
+                                            </label>
                       <input
                         type="text"
                         required
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                        className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 dark:bg-gray-800 dark:text-gray-100"
                         placeholder="SC"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        ZIP Code *
-                      </label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                              ZIP Code *
+                                            </label>
                       <input
                         type="text"
                         required
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                        className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 dark:bg-gray-800 dark:text-gray-100"
                         placeholder="12345"
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Delivery Date *
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                          Delivery Date *
+                                        </label>
                     <input
                       type="date"
                       required
                       min={new Date().toISOString().split('T')[0]}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 dark:bg-gray-800 dark:text-gray-100"
                     />
                   </div>
                 </div>
@@ -219,35 +219,35 @@ export default function Order() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-white rounded-2xl p-6 shadow-lg"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
               >
                 <div className="flex items-center space-x-3 mb-6">
                   <CreditCard size={24} className="text-orange-600" />
-                  <h2 className="text-xl font-serif font-bold text-gray-900">
-                    Payment Information
-                  </h2>
+                  <h2 className="text-xl font-serif font-bold text-gray-900 dark:text-gray-100">
+                                      Payment Information
+                                    </h2>
                 </div>
                 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Card Number *
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                          Card Number *
+                                        </label>
                     <input
                       type="text"
                       required
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                      className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 dark:bg-gray-800 dark:text-gray-100"
                       placeholder="1234 5678 9012 3456"
                     />
                   </div>
                   <div className="grid md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Expiry Month *
                       </label>
                       <select
                         required
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                        className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 dark:bg-gray-800 dark:text-gray-100"
                       >
                         <option value="">Month</option>
                         {Array.from({ length: 12 }, (_, i) => (
@@ -258,12 +258,12 @@ export default function Order() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Expiry Year *
                       </label>
                       <select
                         required
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                        className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 dark:bg-gray-800 dark:text-gray-100"
                       >
                         <option value="">Year</option>
                         {Array.from({ length: 10 }, (_, i) => (
@@ -274,14 +274,14 @@ export default function Order() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         CVV *
                       </label>
                       <input
                         type="text"
                         required
                         maxLength="3"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+                        className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 dark:bg-gray-800 dark:text-gray-100"
                         placeholder="123"
                       />
                     </div>
@@ -297,8 +297,8 @@ export default function Order() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="lg:col-span-1"
             >
-              <div className="bg-white rounded-2xl p-6 shadow-lg sticky top-24">
-                <h2 className="text-xl font-serif font-bold text-gray-900 mb-6">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg sticky top-24">
+                <h2 className="text-xl font-serif font-bold text-gray-900 dark:text-gray-100 mb-6">
                   Order Summary
                 </h2>
                 
@@ -314,14 +314,14 @@ export default function Order() {
                         />
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-medium text-gray-900 text-sm">
+                        <h4 className="font-medium text-gray-900 dark:text-gray-100 text-sm">
                           {item.name}
                         </h4>
-                        <p className="text-gray-600 text-xs">
+                        <p className="text-gray-600 dark:text-gray-300 text-xs">
                           Qty: {item.quantity}
                         </p>
                       </div>
-                      <span className="font-semibold text-sm">
+                      <span className="font-semibold text-white text-sm">
                         ${(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}
                       </span>
                     </div>

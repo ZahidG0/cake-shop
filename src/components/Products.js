@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, ShoppingCart } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+import { ProductsHeading, ProductsDescription } from './ProductsText';
 
 export default function Products() {
   const { addToCart } = useCart();
@@ -221,12 +222,8 @@ export default function Products() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-            Our Signature Cakes
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover our extensive collection of handcrafted cakes, each made with love and the finest ingredients.
-          </p>
+          <ProductsHeading />
+          <ProductsDescription />
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -237,7 +234,7 @@ export default function Products() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.05 }}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden card-hover group"
+              className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg dark:shadow-[0_0_20px_rgba(0,0,0,0.3)] dark:border dark:border-slate-700 overflow-hidden card-hover group"
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
@@ -253,10 +250,10 @@ export default function Products() {
               </div>
               
               <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
                   {product.name}
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                   {product.description}
                 </p>
                 <div className="flex items-center justify-between">

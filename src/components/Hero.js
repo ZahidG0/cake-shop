@@ -6,7 +6,7 @@ import { ArrowRight, Star } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center gradient-bg">
+    <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-purple-900 dark:to-indigo-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -24,38 +24,38 @@ export default function Hero() {
               <span className="text-sm font-medium">Rated 4.9/5 by 1000+ customers</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-serif font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-serif font-bold text-gray-900 dark:text-gray-100 leading-tight">
               Handcrafted Cakes
               <span className="text-orange-600 block">Made with Love</span>
             </h1>
 
-            <p className="text-lg text-gray-600 max-w-lg">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-lg">
               Indulge in our exquisite collection of premium cakes, crafted with the finest ingredients 
               and baked fresh daily. Every bite tells a story of passion and perfection.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-orange-600 text-white px-8 py-4 rounded-full hover:bg-orange-700 transition-all duration-300 flex items-center justify-center space-x-2 group">
+              <button className="bg-primary-600 text-white px-8 py-4 rounded-full hover:bg-primary-700 transition-all duration-300 flex items-center justify-center space-x-2 group btn-glow">
                 <span className="font-semibold">Order Now</span>
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="border-2 border-orange-600 text-orange-600 px-8 py-4 rounded-full hover:bg-orange-600 hover:text-white transition-all duration-300">
+              <button className="border-2 border-primary-600 text-primary-600 dark:border-primary-400 dark:text-primary-400 px-8 py-4 rounded-full hover:bg-primary-600 hover:text-white dark:hover:bg-primary-500 transition-all duration-300 btn-glow">
                 View Menu
               </button>
             </div>
 
             <div className="flex items-center space-x-8 pt-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">500+</div>
-                <div className="text-sm text-gray-600">Happy Customers</div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">500+</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Happy Customers</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">25+</div>
-                <div className="text-sm text-gray-600">Cake Varieties</div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">25+</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Cake Varieties</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">100%</div>
-                <div className="text-sm text-gray-600">Fresh Daily</div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">100%</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Fresh Daily</div>
               </div>
             </div>
           </motion.div>
@@ -81,15 +81,15 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl"
+              className="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-xl dark:shadow-[0_0_20px_rgba(0,0,0,0.3)]"
             >
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
                   <span className="text-2xl">🍰</span>
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">Fresh Today</div>
-                  <div className="text-sm text-gray-600">Baked this morning</div>
+                  <div className="font-semibold text-gray-900 dark:text-gray-50">Fresh Today</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Baked this morning</div>
                 </div>
               </div>
             </motion.div>
