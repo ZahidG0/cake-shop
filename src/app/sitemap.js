@@ -1,28 +1,32 @@
 export default function sitemap() {
+  const baseUrl = process.env.NODE_ENV === 'production' 
+    ? 'https://your-site.netlify.app' 
+    : 'http://localhost:3000';
+
   return [
     {
-      url: 'https://sweetdelights.com',
-      lastModified: new Date(),
+      url: baseUrl,
+      lastModified: new Date().toISOString(),
       changeFrequency: 'daily',
       priority: 1,
     },
     {
-      url: 'https://sweetdelights.com/menu',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
+      url: `${baseUrl}/contact`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://sweetdelights.com/about',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
+      url: `${baseUrl}/cart`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'weekly',
       priority: 0.6,
     },
     {
-      url: 'https://sweetdelights.com/contact',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
+      url: `${baseUrl}/order`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
     },
   ];
 }
