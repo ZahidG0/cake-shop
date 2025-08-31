@@ -93,7 +93,7 @@ export default function LoadingPage({ onComplete }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Cack Shop
+            Cake Shop
           </motion.h1>
 
           <motion.p
