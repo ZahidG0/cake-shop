@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sweetdelights.com/sitemap.xml
+Sitemap: https://YOUR-SITE-NAME.netlify.app/sitemap.xml
